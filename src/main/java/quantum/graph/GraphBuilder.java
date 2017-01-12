@@ -1,4 +1,4 @@
-package quantum;
+package quantum.graph;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ public class GraphBuilder {
 	private final List<UndirectedEdge> edges;
 
 	public Graph build() {
-		Graph graph = new Graph();
+		GraphImpl graph = new GraphImpl();
 		for (UndirectedEdge edge : edges) {
 			graph.add(edge);
 		}

@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import lombok.val;
+import quantum.graph.Vertex;
 
 public class VertexTest {
 

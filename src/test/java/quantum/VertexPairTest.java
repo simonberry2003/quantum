@@ -4,13 +4,15 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import lombok.val;
+import quantum.graph.Vertex;
+import quantum.graph.VertexPair;
 
 public class VertexPairTest {
 
 	@Test
-	public void testGetQubits() {
+	public void testGetIds() {
 		val pair = new VertexPair(new Vertex(1), new Vertex(2));
-		Assert.assertEquals("1 2", pair.getQubits());
+		Assert.assertEquals("1 2", pair.getIds());
 	}
 
 	@Test

@@ -1,4 +1,4 @@
-package quantum;
+package quantum.graph;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -27,9 +27,9 @@ public class VertexPair implements Comparable<VertexPair> {
 	}
 
 	/**
-	 * @return the qubits for the vertex pair
+	 * @return the ids for this vertex pair
 	 */
-	public String getQubits() {
+	public String getIds() {
 		return vertex1.getId() + " " + vertex2.getId();
 	}
 }

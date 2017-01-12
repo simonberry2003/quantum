@@ -2,14 +2,34 @@ package quantum;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeMap;
+
+import javax.inject.Inject;
+
+import com.google.common.base.Preconditions;
+import com.google.inject.Guice;
 
 import lombok.val;
+import quantum.graph.GraphBuilder;
+import quantum.graph.UndirectedEdge;
+import quantum.guice.QuantumModule;
+import quantum.lattice.LatticeFormatter;
 
 public class Main {
 
-	public static void main(String[] args) {
+	private final LatticeFormatter latticeFormatter;
 
+	@Inject
+	public Main(LatticeFormatter latticeFormatter) {
+		this.latticeFormatter = Preconditions.checkNotNull(latticeFormatter);
+	}
+
+	public static void main(String[] args) {
+		val injector = Guice.createInjector(new QuantumModule());
+		val main = injector.getInstance(Main.class);
+		main.run();
+	}
+
+	private void run() {
 		List<UndirectedEdge> problem = new ArrayList<UndirectedEdge>();
 		problem.add(new UndirectedEdge(0, 1));
 		problem.add(new UndirectedEdge(1, 3));
@@ -29,17 +49,6 @@ public class Main {
 		};
 		System.out.println(graph);
 
-		val biases = graph.getBiases();
-		System.out.println("Biases: " + biases);
-
-		val couplings = graph.getCouplings();
-		System.out.println("Couplings: " + couplings);
-
-		val combined = new TreeMap<VertexPair, Integer>(biases);
-		combined.putAll(couplings);
-
-		for (val latticeLine : combined.entrySet()) {
-			System.out.println(latticeLine.getKey().getQubits() + " " + latticeLine.getValue());
-		}
+		graph.outputLattice(latticeFormatter, System.out);
 	}
 }

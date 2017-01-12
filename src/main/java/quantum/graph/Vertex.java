@@ -1,4 +1,4 @@
-package quantum;
+package quantum.graph;
 
 import java.util.HashSet;
 import java.util.Set;

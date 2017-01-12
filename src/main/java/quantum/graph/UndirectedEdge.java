@@ -1,4 +1,4 @@
-package quantum;
+package quantum.graph;
 
 import com.google.common.base.Preconditions;
 
