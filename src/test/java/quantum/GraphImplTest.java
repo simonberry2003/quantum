@@ -4,14 +4,14 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import lombok.val;
-import quantum.graph.GraphImpl;
+import quantum.graph.BasicGraph;
 import quantum.graph.UndirectedEdge;
 
 public class GraphImplTest {
 
 	@Test
 	public void testHasEvenNumberOfVertices() {
-		val graph = new GraphImpl();
+		val graph = new BasicGraph();
 		Assert.assertTrue(graph.hasEvenNumberOfVertices());
 		graph.add(new UndirectedEdge(0, 1));
 		Assert.assertTrue(graph.hasEvenNumberOfVertices());

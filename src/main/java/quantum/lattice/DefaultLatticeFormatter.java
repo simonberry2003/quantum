@@ -16,21 +16,21 @@ import quantum.graph.Vertex;
 import quantum.graph.VertexPair;
 
 @Singleton
-public class LatticeFormatterImpl implements LatticeFormatter {
+public class DefaultLatticeFormatter implements LatticeFormatter {
 
 	private final BiasBuilder biasBuilder;
 	private final CouplingBuilder couplingBuilder;
 
 	@Inject
-	public LatticeFormatterImpl(BiasBuilder biasBuilder, CouplingBuilder couplingBuilder) {
+	public DefaultLatticeFormatter(BiasBuilder biasBuilder, CouplingBuilder couplingBuilder) {
 		this.biasBuilder = Preconditions.checkNotNull(biasBuilder);
 		this.couplingBuilder = Preconditions.checkNotNull(couplingBuilder);
 	}
 
 	@Override
 	public void format(Collection<Vertex> vertices, PrintStream out) {
-		val biases = biasBuilder.build(vertices);
-		val couplings = couplingBuilder.build(vertices);
+		val biases = biasBuilder.create(vertices);
+		val couplings = couplingBuilder.create(vertices);
 		val combined = new TreeMap<VertexPair, Integer>(biases);
 		combined.putAll(couplings);
 		for (val line : combined.entrySet()) {

@@ -19,7 +19,7 @@ public class ZeroBiasBuilder implements BiasBuilder {
 	 * Build biases for the specified vertices with a zero value.
 	 */
 	@Override
-	public Map<VertexPair, Integer> build(Collection<Vertex> vertices) {
+	public Map<VertexPair, Integer> create(Collection<Vertex> vertices) {
 		val biases = new HashMap<VertexPair, Integer>();
 		for (val vertex : vertices) {
 			biases.put(new VertexPair(vertex, vertex), 0);

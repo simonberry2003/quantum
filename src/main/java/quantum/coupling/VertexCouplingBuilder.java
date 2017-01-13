@@ -19,7 +19,7 @@ public class VertexCouplingBuilder implements CouplingBuilder {
 	 * Builds couplings for the specified vertices. If two vertices are connected they are considered closely coupled.
 	 */
 	@Override
-	public Map<VertexPair, Integer> build(Collection<Vertex> vertices) {
+	public Map<VertexPair, Integer> create(Collection<Vertex> vertices) {
 		val couplings = new HashMap<VertexPair, Integer>();
 		for (val vertex1 : vertices) {
 			for (val vertex2 : vertices) {

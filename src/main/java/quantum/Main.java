@@ -1,8 +1,5 @@
 package quantum;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.inject.Inject;
 
 import com.google.common.base.Preconditions;
@@ -10,17 +7,18 @@ import com.google.inject.Guice;
 
 import lombok.val;
 import quantum.graph.GraphBuilder;
-import quantum.graph.UndirectedEdge;
 import quantum.guice.QuantumModule;
 import quantum.lattice.LatticeFormatter;
 
 public class Main {
 
 	private final LatticeFormatter latticeFormatter;
+	private final ProblemProvider problemProvider;
 
 	@Inject
-	public Main(LatticeFormatter latticeFormatter) {
+	public Main(LatticeFormatter latticeFormatter, ProblemProvider problemProvider) {
 		this.latticeFormatter = Preconditions.checkNotNull(latticeFormatter);
+		this.problemProvider = Preconditions.checkNotNull(problemProvider);
 	}
 
 	public static void main(String[] args) {
@@ -30,20 +28,8 @@ public class Main {
 	}
 
 	private void run() {
-		List<UndirectedEdge> problem = new ArrayList<UndirectedEdge>();
-		problem.add(new UndirectedEdge(0, 1));
-		problem.add(new UndirectedEdge(1, 3));
-		problem.add(new UndirectedEdge(2, 0));
-
-//		problem.add(new UndirectedEdge(0, 1));
-//		problem.add(new UndirectedEdge(1, 2));
-//		problem.add(new UndirectedEdge(2, 3));
-//		problem.add(new UndirectedEdge(4, 5));
-//		problem.add(new UndirectedEdge(5, 6));
-//		problem.add(new UndirectedEdge(6, 7));
-//		problem.add(new UndirectedEdge(2, 6));
-
-		val graph = new GraphBuilder(problem).build();
+		val problem = problemProvider.get();
+		val graph = new GraphBuilder(problem.getEdges()).build();
 		if (!graph.hasEvenNumberOfVertices()) {
 			throw new IllegalStateException("Graph must have even number of vertices");
 		};

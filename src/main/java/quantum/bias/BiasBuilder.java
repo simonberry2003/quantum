@@ -7,5 +7,5 @@ import quantum.graph.Vertex;
 import quantum.graph.VertexPair;
 
 public interface BiasBuilder {
-	Map<VertexPair, Integer> build(Collection<Vertex> vertices);
+	Map<VertexPair, Integer> create(Collection<Vertex> vertices);
 }

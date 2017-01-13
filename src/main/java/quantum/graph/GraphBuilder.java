@@ -10,7 +10,7 @@ public class GraphBuilder {
 	private final List<UndirectedEdge> edges;
 
 	public Graph build() {
-		GraphImpl graph = new GraphImpl();
+		BasicGraph graph = new BasicGraph();
 		for (UndirectedEdge edge : edges) {
 			graph.add(edge);
 		}

@@ -15,7 +15,7 @@ import quantum.lattice.LatticeFormatter;
  * A graph is a container class for a number of {@link Vertex}.
  */
 @ToString
-public class GraphImpl implements Graph {
+public class BasicGraph implements Graph {
 
 	/**
 	 * The vertices in the graph ordered by id
