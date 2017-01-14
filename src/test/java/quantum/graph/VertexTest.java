@@ -1,10 +1,9 @@
-package quantum;
+package quantum.graph;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import lombok.val;
-import quantum.graph.Vertex;
 
 public class VertexTest {
 
@@ -15,7 +14,7 @@ public class VertexTest {
 	}
 
 	@Test
-	public void testLink() {
+	public void testLinkAndIsConnectedTo() {
 		val vertex1 = new Vertex(1);
 		val vertex2 = new Vertex(2);
 		vertex1.link(vertex2);

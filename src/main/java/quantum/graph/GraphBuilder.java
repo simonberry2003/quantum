@@ -1,18 +1,19 @@
 package quantum.graph;
 
-import java.util.List;
+import java.util.Set;
 
 import lombok.AllArgsConstructor;
+import lombok.val;
 
 @AllArgsConstructor
 public class GraphBuilder {
 
-	private final List<UndirectedEdge> edges;
+	private final Set<UndirectedEdge> edges;
 
 	public Graph build() {
-		BasicGraph graph = new BasicGraph();
+		val graph = new BasicGraph();
 		for (UndirectedEdge edge : edges) {
-			graph.add(edge);
+			graph.addEdge(edge);
 		}
 		return graph;
 	}

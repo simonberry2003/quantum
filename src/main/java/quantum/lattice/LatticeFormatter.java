@@ -1,10 +1,15 @@
 package quantum.lattice;
 
 import java.io.PrintStream;
-import java.util.Collection;
+import java.util.Set;
 
 import quantum.graph.Vertex;
 
 public interface LatticeFormatter {
-	void format(Collection<Vertex> vertices, PrintStream out);
+	/**
+	 * Format the vertex lattices and output the specified stream
+	 * @param vertices
+	 * @param out
+	 */
+	void format(Set<Vertex> vertices, PrintStream out);
 }

@@ -1,11 +1,10 @@
 package quantum.graph;
 
 import java.io.PrintStream;
-import java.util.Map;
 import java.util.TreeMap;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 
 import lombok.ToString;
 import lombok.val;
@@ -20,7 +19,15 @@ public class BasicGraph implements Graph {
 	/**
 	 * The vertices in the graph ordered by id
 	 */
-	private final Map<Integer, Vertex> vertices = new TreeMap<>();
+	private final TreeMap<Integer, Vertex> vertices;
+
+	public BasicGraph() {
+		this(new TreeMap<Integer, Vertex>());
+	}
+
+	public BasicGraph(TreeMap<Integer, Vertex> vertices) {
+		this.vertices = Preconditions.checkNotNull(vertices);
+	}
 
 	/**
 	 * Creates a new vertex for each end of the edge if one does not already exist and
@@ -28,7 +35,7 @@ public class BasicGraph implements Graph {
 	 * @param edge
 	 */
 	@Override
-	public void add(UndirectedEdge edge) {
+	public void addEdge(UndirectedEdge edge) {
 		Preconditions.checkNotNull(edge);
 		val vertex1 = getOrCreateVertex(edge.getVertex1());
 		val vertex2 = getOrCreateVertex(edge.getVertex2());
@@ -47,7 +54,8 @@ public class BasicGraph implements Graph {
 		return vertices.size() % 2 == 0;
 	}
 
+	@Override
 	public void outputLattice(LatticeFormatter formatter, PrintStream out) {
-		formatter.format(ImmutableList.copyOf(vertices.values()), out);
+		formatter.format(ImmutableSet.copyOf(vertices.values()), out);
 	}
 }

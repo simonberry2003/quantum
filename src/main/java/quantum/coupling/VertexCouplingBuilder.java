@@ -1,8 +1,8 @@
 package quantum.coupling;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import javax.inject.Singleton;
 
@@ -19,7 +19,7 @@ public class VertexCouplingBuilder implements CouplingBuilder {
 	 * Builds couplings for the specified vertices. If two vertices are connected they are considered closely coupled.
 	 */
 	@Override
-	public Map<VertexPair, Integer> create(Collection<Vertex> vertices) {
+	public Map<VertexPair, Integer> build(Set<Vertex> vertices) {
 		val couplings = new HashMap<VertexPair, Integer>();
 		for (val vertex1 : vertices) {
 			for (val vertex2 : vertices) {

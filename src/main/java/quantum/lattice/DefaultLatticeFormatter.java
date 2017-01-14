@@ -1,7 +1,7 @@
 package quantum.lattice;
 
 import java.io.PrintStream;
-import java.util.Collection;
+import java.util.Set;
 import java.util.TreeMap;
 
 import javax.inject.Inject;
@@ -28,9 +28,9 @@ public class DefaultLatticeFormatter implements LatticeFormatter {
 	}
 
 	@Override
-	public void format(Collection<Vertex> vertices, PrintStream out) {
-		val biases = biasBuilder.create(vertices);
-		val couplings = couplingBuilder.create(vertices);
+	public void format(Set<Vertex> vertices, PrintStream out) {
+		val biases = biasBuilder.build(vertices);
+		val couplings = couplingBuilder.build(vertices);
 		val combined = new TreeMap<VertexPair, Integer>(biases);
 		combined.putAll(couplings);
 		for (val line : combined.entrySet()) {

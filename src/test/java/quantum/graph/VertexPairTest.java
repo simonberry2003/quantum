@@ -1,4 +1,4 @@
-package quantum;
+package quantum.graph;
 
 import org.junit.Assert;
 import org.junit.Test;

@@ -9,7 +9,7 @@ public interface Graph {
 	 * Adds an undirected edge to the graph.
 	 * @param edge
 	 */
-	void add(UndirectedEdge edge);
+	void addEdge(UndirectedEdge edge);
 
 	/**
 	 * @return true if graph has an even number of vertices
